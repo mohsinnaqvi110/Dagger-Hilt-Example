@@ -13,6 +13,10 @@ class MainRepository @Inject constructor() {
 
         Thread(Runnable {
             Thread.sleep(SIMULATE_NETWORK_DELAY)
+            if (Random.nextInt(2) % 2 == 0) {
+                myResource.postValue(MyResult.Error(Exception()))
+                return@Runnable
+            }
             val numberList = (1..10).map { Random.nextInt(20) }
             myResource.postValue(MyResult.Success(numberList))
         }).start()

@@ -35,7 +35,7 @@ class MainFragment : Fragment() {
         viewModel.numberList.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is MyResult.Success -> message.text = it.data.size.toString()
-                is MyResult.Error -> message.text = it.exception.toString()
+                is MyResult.Error -> message.text = getString(R.string.error)
                 is MyResult.Loading -> message.text = getString(R.string.loading)
             }.exhaustive
         })
