@@ -1,30 +1,45 @@
 package com.vsahin.daggerhiltexample.ui.main
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.vsahin.daggerhiltexample.R
+import com.vsahin.daggerhiltexample.extension.exhaustive
+import com.vsahin.data.MyResult
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.main_fragment.*
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     companion object {
         fun newInstance() = MainFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
+        viewModel.numberList.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is MyResult.Success -> message.text = it.data.size.toString()
+                is MyResult.Error -> message.text = it.exception.toString()
+                is MyResult.Loading -> message.text = getString(R.string.loading)
+            }.exhaustive
+        })
+    }
 }
