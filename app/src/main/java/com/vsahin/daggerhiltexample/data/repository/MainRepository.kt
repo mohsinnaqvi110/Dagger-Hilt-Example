@@ -1,11 +1,10 @@
-package com.vsahin.data.repository
+package com.vsahin.daggerhiltexample.data.repository
 
 import androidx.lifecycle.MutableLiveData
-import com.vsahin.data.MyResult
+import com.vsahin.daggerhiltexample.data.MyResult
 import dagger.Reusable
 import java.util.*
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @Reusable
 class MainRepository @Inject constructor() {

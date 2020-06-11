@@ -1,4 +1,4 @@
-package com.vsahin.data
+package com.vsahin.daggerhiltexample.data
 
 import java.lang.Exception
 

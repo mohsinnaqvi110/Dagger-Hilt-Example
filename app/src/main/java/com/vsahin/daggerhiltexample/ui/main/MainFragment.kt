@@ -1,17 +1,15 @@
 package com.vsahin.daggerhiltexample.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.vsahin.daggerhiltexample.R
 import com.vsahin.daggerhiltexample.extension.exhaustive
-import com.vsahin.data.MyResult
+import com.vsahin.daggerhiltexample.data.MyResult
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.main_fragment.*
 

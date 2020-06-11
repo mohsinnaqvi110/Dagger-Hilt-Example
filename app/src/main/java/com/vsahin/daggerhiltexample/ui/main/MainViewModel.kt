@@ -6,8 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.vsahin.data.MyResult
-import com.vsahin.data.repository.MainRepository
+import com.vsahin.daggerhiltexample.data.MyResult
+import com.vsahin.daggerhiltexample.data.repository.MainRepository
 
 class MainViewModel @ViewModelInject constructor(
     repository: MainRepository,
