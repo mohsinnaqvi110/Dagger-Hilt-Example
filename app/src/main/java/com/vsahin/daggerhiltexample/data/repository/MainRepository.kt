@@ -3,8 +3,8 @@ package com.vsahin.daggerhiltexample.data.repository
 import androidx.lifecycle.MutableLiveData
 import com.vsahin.daggerhiltexample.data.MyResult
 import dagger.Reusable
-import java.util.*
 import javax.inject.Inject
+import kotlin.random.Random
 
 @Reusable
 class MainRepository @Inject constructor() {
@@ -13,8 +13,7 @@ class MainRepository @Inject constructor() {
 
         Thread(Runnable {
             Thread.sleep(SIMULATE_NETWORK_DELAY)
-            val random = Random()
-            val numberList = (1..10).map { random.nextInt() }
+            val numberList = (1..10).map { Random.nextInt(20) }
             myResource.postValue(MyResult.Success(numberList))
         }).start()
 
