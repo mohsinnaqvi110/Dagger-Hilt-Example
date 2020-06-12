@@ -32,11 +32,24 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        swipeRefreshLayout.setOnRefreshListener {
+            viewModel.refresh()
+        }
+
         viewModel.numberList.observe(viewLifecycleOwner, Observer {
             when (it) {
-                is MyResult.Success -> message.text = it.data.size.toString()
-                is MyResult.Error -> message.text = getString(R.string.error)
-                is MyResult.Loading -> message.text = getString(R.string.loading)
+                is MyResult.Success -> {
+                    message.text = it.data.size.toString()
+                    swipeRefreshLayout.isRefreshing = false
+                }
+                is MyResult.Error -> {
+                    message.text = getString(R.string.error)
+                    swipeRefreshLayout.isRefreshing = false
+                }
+                is MyResult.Loading -> {
+                    message.text = getString(R.string.loading)
+                    swipeRefreshLayout.isRefreshing = true
+                }
             }.exhaustive
         })
     }
