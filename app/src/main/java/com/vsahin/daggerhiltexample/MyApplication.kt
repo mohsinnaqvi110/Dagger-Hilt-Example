@@ -2,8 +2,8 @@ package com.vsahin.daggerhiltexample
 
 import android.app.Activity
 import android.os.Bundle
-import android.util.Log
 import androidx.multidex.MultiDexApplication
+import com.vsahin.daggerhiltexample.analytics.FakeAnalytics
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 

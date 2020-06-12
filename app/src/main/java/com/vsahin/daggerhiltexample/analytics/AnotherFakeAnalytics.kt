@@ -1,4 +1,4 @@
-package com.vsahin.daggerhiltexample
+package com.vsahin.daggerhiltexample.analytics
 
 import android.util.Log
 import javax.inject.Inject
