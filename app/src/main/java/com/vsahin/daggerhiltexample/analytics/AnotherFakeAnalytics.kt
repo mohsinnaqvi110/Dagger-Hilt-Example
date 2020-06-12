@@ -1,9 +1,11 @@
 package com.vsahin.daggerhiltexample.analytics
 
 import android.util.Log
+import dagger.hilt.android.scopes.ActivityScoped
+import dagger.hilt.android.scopes.FragmentScoped
 import javax.inject.Inject
 
-class AnotherFakeAnalytics @Inject constructor() {
+class AnotherFakeAnalytics {
     fun sendRefresh() {
         Log.d(TAG, "sendRefresh")
     }

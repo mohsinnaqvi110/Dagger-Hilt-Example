@@ -1,6 +1,7 @@
 package com.vsahin.daggerhiltexample.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,11 +21,6 @@ class MainFragment : Fragment() {
 
     @Inject
     lateinit var anotherFakeAnalytics: AnotherFakeAnalytics
-
-    companion object {
-        fun newInstance() = MainFragment()
-    }
-
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
@@ -36,6 +32,8 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        Log.d(TAG, "AnotherFakeAnalytics: $anotherFakeAnalytics")
 
         swipeRefreshLayout.setOnRefreshListener {
             viewModel.refresh()
@@ -58,5 +56,11 @@ class MainFragment : Fragment() {
                 }
             }.exhaustive
         })
+    }
+
+    companion object {
+        private const val TAG: String = "MainFragment"
+
+        fun newInstance() = MainFragment()
     }
 }
