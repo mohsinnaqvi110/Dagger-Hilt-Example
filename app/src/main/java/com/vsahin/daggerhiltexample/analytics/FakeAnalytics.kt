@@ -8,6 +8,10 @@ class FakeAnalytics @Inject constructor() {
         Log.d(TAG, "sendScreen: $screenName")
     }
 
+    fun sendView(viewName: String) {
+        Log.d(TAG, "sendView: $viewName")
+    }
+
     companion object {
         private const val TAG: String = "FakeAnalytics"
     }

@@ -6,11 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainFragment">
 
-    <TextView
+    <com.vsahin.daggerhiltexample.ui.custom.MyTextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="MainFragment" />
-
+        tools:text="@string/loading" />
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
